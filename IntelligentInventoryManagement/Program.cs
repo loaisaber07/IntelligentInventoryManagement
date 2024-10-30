@@ -11,13 +11,15 @@ namespace IntelligentInventoryManagement
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers();
+            #region Configure DB and Identity
             builder.Services.AddDbContext<InventoryManagementDB>(op =>
             {
                 op.UseSqlServer(builder.Configuration.GetConnectionString("default"));
             });
             builder.Services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<InventoryManagementDB>(); 
-            builder.Services.AddControllers();
+                .AddEntityFrameworkStores<InventoryManagementDB>();
+            #endregion 
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

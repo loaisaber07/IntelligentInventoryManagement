@@ -1,4 +1,9 @@
 
+using DataAccessManagement.Entity;
+using DataAccessManagement.MainDataBase;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace IntelligentInventoryManagement
 {
     public class Program
@@ -6,7 +11,12 @@ namespace IntelligentInventoryManagement
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddDbContext<InventoryManagementDB>(op =>
+            {
+                op.UseSqlServer(builder.Configuration.GetConnectionString("default"));
+            });
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<InventoryManagementDB>(); 
             builder.Services.AddControllers();
 
             builder.Services.AddEndpointsApiExplorer();

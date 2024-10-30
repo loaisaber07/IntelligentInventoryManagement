@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelligentInventoryManagement", "IntelligentInventoryManagement\IntelligentInventoryManagement.csproj", "{FA4BD88D-2EE6-46EB-BB0D-B4B5538412B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessManagement", "DataAccessManagement\DataAccessManagement.csproj", "{844414C1-F455-4415-A770-DA36CBCD0682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{8A64DE57-13F4-4924-9A9A-CB462579523C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FA4BD88D-2EE6-46EB-BB0D-B4B5538412B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA4BD88D-2EE6-46EB-BB0D-B4B5538412B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA4BD88D-2EE6-46EB-BB0D-B4B5538412B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844414C1-F455-4415-A770-DA36CBCD0682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844414C1-F455-4415-A770-DA36CBCD0682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844414C1-F455-4415-A770-DA36CBCD0682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844414C1-F455-4415-A770-DA36CBCD0682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A64DE57-13F4-4924-9A9A-CB462579523C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A64DE57-13F4-4924-9A9A-CB462579523C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A64DE57-13F4-4924-9A9A-CB462579523C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A64DE57-13F4-4924-9A9A-CB462579523C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

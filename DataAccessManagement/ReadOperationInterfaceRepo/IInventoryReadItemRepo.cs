@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessManagement.ReadOperationInterfaceRepo;
 
-    public interface IInventoryItemRepo<TEntity , TKey>: IGenericReadOperation<TEntity, TKey> where TEntity : class
+    public interface IInventoryReadItemRepo<TEntity , TKey>: IGenericReadOperation<TEntity, TKey> where TEntity : class
     {
     }
 

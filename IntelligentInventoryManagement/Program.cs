@@ -12,6 +12,7 @@ namespace IntelligentInventoryManagement
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllers();
+            /*******************Configure Database and Identity*************************/
             #region Configure DB and Identity
             builder.Services.AddDbContext<InventoryManagementDB>(op =>
             {
@@ -20,7 +21,7 @@ namespace IntelligentInventoryManagement
             builder.Services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<InventoryManagementDB>();
             #endregion 
-
+            /*********************************************************/
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             var app = builder.Build();

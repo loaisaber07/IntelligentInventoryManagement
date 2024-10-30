@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessManagement.ReadOperationRepository;
 
-    public class InventoryItemRepository :GenericReadOperation<InventoryItem,int>,IInventoryItemRepo<InventoryItem ,int>
+    public class InventoryItemReadRepository :GenericReadOperation<InventoryItem,int>,IInventoryReadItemRepo<InventoryItem ,int>
     {
     private readonly InventoryManagementDB context;
 
-    public InventoryItemRepository(InventoryManagementDB context) : base(context)
+    public InventoryItemReadRepository(InventoryManagementDB context) : base(context)
     {
         this.context = context;
     }

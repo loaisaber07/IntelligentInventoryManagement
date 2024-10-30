@@ -20,28 +20,35 @@ namespace DataAccessManagement.WriteOperationRepository
 
         public async Task<bool> BulkDelete(IEnumerable<TEntity> entities)
         {
-            try 
-            {
-                await context
-                    .BulkDeleteAsync<TEntity>(entities);
-                return true;
-            } 
-            catch
-            {
-                return false;     
-            }  
+            using var transaction = await context.Database.BeginTransactionAsync();
+                try
+                {
+                    await context
+                        .BulkDeleteAsync<TEntity>(entities); 
+                await transaction.CommitAsync();
+                    return true;
+                }
+                catch
+                { 
+                    await transaction.RollbackAsync();
+                    return false;
+                }  
         }
 
         public async Task<bool> BulkInsert(IEnumerable<TEntity> entities)
         {
+            using var transaction = await context.Database.BeginTransactionAsync();
+
             try
             {
                 await context
-                    .BulkInsertAsync<TEntity>(entities);
+                    .BulkInsertAsync<TEntity>(entities); 
+                await transaction.CommitAsync();
                 return true;
             }
             catch
-            {
+            { 
+                await transaction.RollbackAsync();
                 return false;
             }
 
@@ -49,14 +56,19 @@ namespace DataAccessManagement.WriteOperationRepository
 
         public async Task<bool>  BulkUpdate(IEnumerable<TEntity> entities)
         {
+            using var transaction = await context.Database.BeginTransactionAsync();
+
             try
             {
                 await context
                     .BulkUpdateAsync<TEntity>(entities);
+
+                await transaction.CommitAsync();
                 return true;
             }
             catch
-            {
+            { 
+                await transaction.RollbackAsync();
                 return false;
             }
 

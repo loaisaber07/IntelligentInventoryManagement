@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessManagement.WriteOperationRepository;
 
-public abstract class GenericWriteRepo<TEntity, TKey> : IGenericWriteRepo<TEntity> where TEntity : class
+public abstract class GenericWriteRepo<TEntity> : IGenericWriteRepo<TEntity> where TEntity : class
 {
     private readonly InventoryManagementDB context;
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Text.Json.Serialization;
 
 namespace IntelligentInventoryManagement
 {
@@ -16,7 +17,13 @@ namespace IntelligentInventoryManagement
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(op => {
+                     op.JsonSerializerOptions.PropertyNamingPolicy = null; 
+                     op.JsonSerializerOptions.PropertyNameCaseInsensitive=true;
+                     op.JsonSerializerOptions.WriteIndented = true; 
+                     op.JsonSerializerOptions.ReferenceHandler=ReferenceHandler.IgnoreCycles;
+                });
             /*******************Configure Database and Identity*************************/
             #region Configure DB and Identity
             builder.Services.AddDbContext<InventoryManagementDB>(op =>
@@ -59,8 +66,15 @@ namespace IntelligentInventoryManagement
             #endregion
             /***************************Allow Cors AnyRegion***************************/
             #region Cors
-           
+            builder.Services.AddCors(Op => {
+                Op.AddPolicy("AllowAll", policy => {
+                    policy.AllowAnyOrigin();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                });
+            });
             #endregion
+            
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -72,7 +86,7 @@ namespace IntelligentInventoryManagement
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();

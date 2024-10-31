@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessManagement.WriteOperationInterfaceRepo
 {
-    internal interface IWareHouseWriteRepo<TEntity>:IGenericWriteRepo<TEntity> where TEntity : class
+    public interface IWareHouseWriteRepo<TEntity>:IGenericWriteRepo<TEntity> where TEntity : class
     {
     }
 }

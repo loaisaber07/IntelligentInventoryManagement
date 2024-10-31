@@ -5,6 +5,7 @@ using DataAccessManagement.MainDataBase;
 using IntelligentInventoryManagement.IServiceCollectionExtension;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -74,7 +75,15 @@ namespace IntelligentInventoryManagement
                 });
             });
             #endregion
-            
+            /**********************Add Version *******************************/
+            #region Add Version
+            builder.Services.AddApiVersioning(op =>
+            {
+                op.DefaultApiVersion = new ApiVersion(1, 0);
+                op.AssumeDefaultVersionWhenUnspecified = true;
+                op.ReportApiVersions = true;
+            });
+            #endregion
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
